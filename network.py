@@ -14,7 +14,7 @@ class Encoder(nn.Module):
         """
         super(Encoder, self).__init__()
         self.alpha = nn.Parameter(t.ones(1))
-        self.pos_emb = nn.Embedding.from_pretrained(get_sinusoid_encoding_table(1024, num_hidden, padding_idx=0),
+        self.pos_emb = nn.Embedding.from_pretrained(get_sinusoid_encoding_table(5000, num_hidden, padding_idx=0),
                                                     freeze=True)
         self.pos_dropout = nn.Dropout(p=0.1)
         self.encoder_prenet = EncoderPrenet(embedding_size, num_hidden)
@@ -60,7 +60,7 @@ class MelDecoder(nn.Module):
         :param num_hidden: dimension of hidden
         """
         super(MelDecoder, self).__init__()
-        self.pos_emb = nn.Embedding.from_pretrained(get_sinusoid_encoding_table(1024, num_hidden, padding_idx=0),
+        self.pos_emb = nn.Embedding.from_pretrained(get_sinusoid_encoding_table(5000, num_hidden, padding_idx=0),
                                                     freeze=True)
         self.pos_dropout = nn.Dropout(p=0.1)
         self.alpha = nn.Parameter(t.ones(1))

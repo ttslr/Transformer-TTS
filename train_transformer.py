@@ -97,6 +97,7 @@ def main():
             
             # Update weights
             optimizer.step()
+            writer.close()
 
             if global_step % hp.save_step == 0:
                 t.save({'model':m.state_dict(),
